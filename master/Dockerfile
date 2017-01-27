@@ -1,14 +1,9 @@
-FROM gerritforge/gerrit-ubuntu15.04:2.11.9
-
-USER gerrit
-
-ADD gerrit.config /var/gerrit/etc/
-
-ADD secure.config /var/gerrit/etc/
+FROM gerritforge/gerrit-ubuntu15.04:2.13.5
 
 USER root
 
-RUN apt-get install -y net-tools netcat inetutils-ping
+RUN apt-get install -y net-tools netcat inetutils-ping openjdk-8-jdk && \
+    update-java-alternatives -v -s java-1.8.0-openjdk-amd64
 
 ADD start.sh /bin/
 

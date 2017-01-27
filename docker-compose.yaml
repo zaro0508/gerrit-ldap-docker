@@ -11,6 +11,9 @@ services:
 
   master:
     build: master
+    volumes:
+      - "./master/plugins:/var/gerrit/plugins"
+      - "./master/etc:/var/gerrit/etc"
     ports:
       - "8080:8080"
       - "29418:29418"
@@ -28,4 +31,7 @@ services:
       - "636:636"
     environment:
       - LDAP_ADMIN_PASSWORD=secret
+
+volumes:
+  plugins:
 
